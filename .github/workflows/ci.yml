@@ -24,3 +24,7 @@ jobs:
             - run: npm install
             # run npm test script
             - run: npm test
+            # trigger render deployment
+            - name: Trigger Render Deploy
+              if: success()
+              run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
